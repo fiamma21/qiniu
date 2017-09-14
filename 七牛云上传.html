@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="myStyle.css">
+</head>
+<body>
+<!--Web登陆页图片-->
+<div class="typeTitle" style="margin-bottom: 15px;margin-top: 15px;">
+    <dl>
+        <dt style="margin-right: 20px;">
+            <span style="font-size: 22px;">Web登陆页图片</span>
+            <span class="u-a" style="margin-left: 736px;cursor: pointer;">上传</span>
+            <input class="u-input" style="margin-left: 736px;width: 74px;" type="file" accept="image/jpg,image/bmp,image/gif,image/jpeg,image/png" id="browse2">
+            <span class="u-input-notify" style="color: #FF0000;margin-left: 200px;">请上传尺寸比例1920*468图片</span>
+            <input class="addImg" style="position: absolute;margin-left: 515px;" type="button" value="保存" id="submit2">
+            <div class="line20"></div>
+        </dt>
+        <dd style="height: 120px;">
+            <ul class="u-ul" id="webLogin" style="min-height: 120px;">
+            </ul>
+            <div class="line20"></div>
+            <span id="webLogin_uspan" style="color: #FF0000;margin-left: 20px;">*</span>
+        </dd>
+    </dl>
+</div>
+<script src="jquery-1.8.2.min.js"></script>
+<script src="page.js"></script>
+<script src="utility.js"></script>
+<script>
+    utility.initUploadpic('webLogin','browse2','submit2',1,1,1,webLoginAdd);//web登录页图片上传
+   function webLoginAdd(img){
+        var params = {};
+        params.picUrl =img;
+        page.ajaxNew({
+            url: page.picUploadBaseUrl+"resPic/pcLoginAdd.do",
+            param: params,
+            success: function(data, param) {
+                page.dialogTips("保存成功！");
+                page.webLogin();
+            }
+        });
+    }
+    // web登录页图片
+    function webLogin(){
+        var params = {};
+        page.ajaxNew({
+            url: "../../resPic/pcLoginInfo.do",
+            param: params,
+            success: function(data, param) {
+                $.each(data.data, function(i, v){
+                    v.webLogin = v.picUrl;
+                    utility.showInfoPicsMost(v,['webLogin']);
+                });
+            }
+        });
+    }
+</script>
+</body>
+</html>
