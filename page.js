@@ -12,7 +12,7 @@
 	nowUrl: "http://192.168.1.221:8083/",
 	strPic:"",
 	// 分页显示数
-	pageSize: 9,
+	pageSize: 10,
 	// 当前页数
 	myCurPage: 0,
 	// 封装ajax
