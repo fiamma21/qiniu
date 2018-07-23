@@ -9,7 +9,7 @@
 	picUploadBaseUrl:'http://127.0.0.1:8084/',
 	// 正式环境的PC端的地址
 	// http://www.momfo.net/
-	nowUrl: "http://192.168.1.221:8082/",
+	nowUrl: "http://192.168.1.221:8083/",
 	strPic:"",
 	// 分页显示数
 	pageSize: 10,
